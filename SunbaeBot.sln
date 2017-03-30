@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunbae-Bot", "Sunbae-Bot\Sunbae-Bot.csproj", "{C22A872D-69DB-4A10-BF38-7E81013E3DBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunbaeBot", "Sunbae-Bot\SunbaeBot.csproj", "{C22A872D-69DB-4A10-BF38-7E81013E3DBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

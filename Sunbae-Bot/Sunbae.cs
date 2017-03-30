@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Sunbae_Bot.IO;
+using SunbaeBot.IO;
 using Discore;
 using Discore.WebSocket;
 using System.Threading;
+using Commands;
 
-namespace Sunbae_Bot
+namespace SunbaeBot
 {
     class Sunbae
     {
         public static string version = "1.0";
 
-        static void Main(string[] args) => new Sunbae().Start();
+        static void Main(string[] args) => Start().Wait();
 
-        public async Task Start()
+        public static async Task Start()
         {
+            Settings.Load();
             Log.Taexify();
 
-            DiscordBotUserToken token = new DiscordBotUserToken("");
+            DiscordBotUserToken token = new DiscordBotUserToken(Settings.sunbae.Token);
             DiscordWebSocketApplication app = new DiscordWebSocketApplication(token);
 
             Shard shard = app.ShardManager.CreateSingleShard();
             await shard.StartAsync(CancellationToken.None);
 
-            shard.Gateway.OnMessageCreated += OnMessageReceived;
+            shard.Gateway.OnMessageCreated += Command.ProcessCommand;
 
             while (shard.IsRunning)
                 await Task.Delay(1000);
@@ -33,13 +35,13 @@ namespace Sunbae_Bot
         {
             Shard shard = e.Shard;
             DiscordMessage message = e.Message;
+            ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(message.ChannelId);
 
             if (message.Author == shard.User)
                 return;
 
             if (message.Content == "!ping")
             {
-                ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(message.ChannelId);
                 try
                 {
                     await textChannel.SendMessage($"<@{message.Author.Id}> Pong!");

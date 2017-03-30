@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sunbae_Bot.IO
+namespace SunbaeBot.IO
 {
     class Log
     {
