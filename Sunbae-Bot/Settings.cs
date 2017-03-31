@@ -22,13 +22,13 @@ namespace SunbaeBot
             using (var writer = new StreamWriter(stream))
                 writer.Write(JsonConvert.SerializeObject(_instance, Formatting.Indented));
         }
-        public class Sunbae
+        public class SunbaeSettings
         {
             [JsonProperty("discordToken")]
             public string Token;
         }
         [JsonProperty("Sunbae")]
-        private Sunbae _sunbae = new Sunbae();
-        public static Sunbae sunbae => _instance._sunbae;
+        private SunbaeSettings _sunbae = new SunbaeSettings();
+        public static SunbaeSettings Sunbae => _instance._sunbae;
     }
 }

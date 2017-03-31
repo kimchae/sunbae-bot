@@ -19,13 +19,13 @@ namespace SunbaeBot
             Settings.Load();
             Log.Taexify();
 
-            DiscordBotUserToken token = new DiscordBotUserToken(Settings.sunbae.Token);
+            DiscordBotUserToken token = new DiscordBotUserToken(Settings.Sunbae.Token);
             DiscordWebSocketApplication app = new DiscordWebSocketApplication(token);
 
             Shard shard = app.ShardManager.CreateSingleShard();
             await shard.StartAsync(CancellationToken.None);
 
-            shard.Gateway.OnMessageCreated += Command.ProcessCommand;
+            shard.Gateway.OnMessageCreated += CommandParser.ProcessCommand;
 
             while (shard.IsRunning)
                 await Task.Delay(1000);

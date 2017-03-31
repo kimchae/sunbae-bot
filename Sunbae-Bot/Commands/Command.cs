@@ -1,32 +1,18 @@
-﻿using Discore.WebSocket;
-using SunbaeBot.IO;
-using System;
+﻿using Discore;
 using System.Text.RegularExpressions;
 
-namespace Commands
+namespace SunbaeBot.Commands
 {
-    public class Command
+    abstract class Command
     {
-        public static string _prefix { get; private set; } = "!";
+        public string Name { get; set; }
+        public string Desc { get; set; }
+        public int _args { get; set; } = 0;
+        public int _optionalArgs { get; set; } = 0;
 
-        public static void ProcessCommand(object sender, MessageEventArgs e)
+        public Command(MatchCollection args)
         {
-            string body = e.Message.Content;
-            if (!body.StartsWith(_prefix))
-                return;
-
-            Regex pattern = new Regex("([\"'])(?:(?=(\\\\?))\\2.)*?\\1|([^\\s]+)");
-            var content = pattern.Matches(body);
-
-            foreach (Group group in content)
-            {
-                Log.Inform(group.Value);
-            }
-        }
-
-        public static void SetPrefix(string prefix)
-        {
-            _prefix = prefix;
+            
         }
     }
 }
