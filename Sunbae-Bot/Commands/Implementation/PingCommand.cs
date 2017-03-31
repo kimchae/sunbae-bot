@@ -1,6 +1,7 @@
 ﻿using Discore;
 using Discore.WebSocket;
 using System.Text.RegularExpressions;
+using DiscoreCommands;
 
 namespace SunbaeBot.Commands.Implementation
 {

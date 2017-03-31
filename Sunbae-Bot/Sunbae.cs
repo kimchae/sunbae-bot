@@ -5,7 +5,7 @@ using Discore;
 using Discore.WebSocket;
 using System.Threading;
 using SunbaeBot.Commands.Implementation;
-using SunbaeBot.Commands;
+using DiscoreCommands;
 
 namespace SunbaeBot
 {
@@ -30,7 +30,6 @@ namespace SunbaeBot
 
             CommandParser.SetPrefix("");
             // Commands
-            CommandFactory.RegisterCommand("ping", new PingCommand());
             CommandFactory.RegisterCommand("ping", new PingCommand());
 
             while (shard.IsRunning)
