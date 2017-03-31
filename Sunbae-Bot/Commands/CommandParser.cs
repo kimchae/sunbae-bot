@@ -5,7 +5,7 @@ using SunbaeBot.IO;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Commands
+namespace SunbaeBot.Commands
 {
     public class CommandParser
     {

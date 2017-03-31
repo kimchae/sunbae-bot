@@ -4,8 +4,8 @@ using SunbaeBot.IO;
 using Discore;
 using Discore.WebSocket;
 using System.Threading;
-using Commands;
 using SunbaeBot.Commands.Implementation;
+using SunbaeBot.Commands;
 
 namespace SunbaeBot
 {
@@ -28,9 +28,10 @@ namespace SunbaeBot
 
             shard.Gateway.OnMessageCreated += CommandParser.ProcessCommand;
 
+            CommandParser.SetPrefix("");
             // Commands
-            Commands.CommandFactory.RegisterCommand("ping", new PingCommand());
-
+            CommandFactory.RegisterCommand("ping", new PingCommand());
+            CommandFactory.RegisterCommand("ping", new PingCommand());
 
             while (shard.IsRunning)
                 await Task.Delay(1000);
