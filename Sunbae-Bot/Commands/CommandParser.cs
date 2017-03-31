@@ -18,22 +18,18 @@ namespace Commands
                 return;
 
             Regex pattern = new Regex("([\"'])(?:(?=(\\\\?))\\2.)*?\\1|([^\\s]+)");
-            var content = pattern.Matches(body);
+            var args = pattern.Matches(body);
 
             Shard shard = e.Shard;
             DiscordMessage message = e.Message;
             ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(message.ChannelId);
-            string cmd = content[0].Value.Substring(1, content[0].Value.Length - 1);
-            switch (cmd)
-            {
-                case "boop":
-                    textChannel.SendMessage("test");
-                    break;
-            }
+            string cmd = args[0].Value.Substring(1, args[0].Value.Length - 1);
+
+            CommandFactory.ExecuteCommand(cmd, args, e);
 
             if (cmd == "")
             {
-                if (content.Count < (0 + 1) - (0))
+                if (args.Count < (0 + 1) - (0))
                 {
                     textChannel.SendMessage("Incorrect number of arguments.");
                     return;

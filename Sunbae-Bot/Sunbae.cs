@@ -5,6 +5,7 @@ using Discore;
 using Discore.WebSocket;
 using System.Threading;
 using Commands;
+using SunbaeBot.Commands.Implementation;
 
 namespace SunbaeBot
 {
@@ -27,27 +28,12 @@ namespace SunbaeBot
 
             shard.Gateway.OnMessageCreated += CommandParser.ProcessCommand;
 
+            // Commands
+            Commands.CommandFactory.RegisterCommand("ping", new PingCommand());
+
+
             while (shard.IsRunning)
                 await Task.Delay(1000);
-        }
-
-        private static async void OnMessageReceived(object sender, MessageEventArgs e)
-        {
-            Shard shard = e.Shard;
-            DiscordMessage message = e.Message;
-            ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(message.ChannelId);
-
-            if (message.Author == shard.User)
-                return;
-
-            if (message.Content == "!ping")
-            {
-                try
-                {
-                    await textChannel.SendMessage($"<@{message.Author.Id}> Pong!");
-                }
-                catch (Exception) { Log.Error("Error sending message"); }
-            }
         }
     }
 }
