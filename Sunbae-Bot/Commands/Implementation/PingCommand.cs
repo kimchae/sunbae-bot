@@ -15,7 +15,7 @@ namespace SunbaeBot.Commands.Implementation
 
         public override async void Execute(ITextChannel Channel, MessageEventArgs e, MatchCollection args)
         {
-            await Channel.SendMessage("pong");
+            await Channel.CreateMessage("pong");
         }
     }
 }

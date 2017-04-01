@@ -8,8 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discore" Version="2.1.2" />
+    <PackageReference Include="Discore" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\metch\Documents\Visual Studio 2017\Projects\DiscoreCommands\DiscoreCommands\DiscoreCommands.csproj" />
   </ItemGroup>
 
 </Project>

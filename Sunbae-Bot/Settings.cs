@@ -26,6 +26,8 @@ namespace SunbaeBot
         {
             [JsonProperty("discordToken")]
             public string Token;
+            [JsonProperty("bindChannel")]
+            public string ChannelID;
         }
         [JsonProperty("Sunbae")]
         private SunbaeSettings _sunbae = new SunbaeSettings();
